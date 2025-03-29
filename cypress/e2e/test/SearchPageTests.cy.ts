@@ -1,5 +1,5 @@
 import HomePage from "../../pageobjects/HomePage";
-import { validSearchTerm } from "../helpers/constants/SearchPage";
+import { validSearchTerm } from "../../helpers/constants/SearchPage";
 
 describe("This section will cover all test cases for Search Page.", () => {
   beforeEach(() => {
@@ -12,7 +12,7 @@ describe("This section will cover all test cases for Search Page.", () => {
     const searchPage = homePage.clickOnSearchButton();
     searchPage.enterValidTermInSearchInputField(validSearchTerm);
     searchPage.getIssueTitle().then((title) => {
-      expect(title.trim()).to.equal(validSearchTerm);
+      expect(title.trim()).to.equal(validSearchTerm, "Issue ticket not displayed when valid search term entered in search input field!");
     });
   });
 
@@ -21,7 +21,11 @@ describe("This section will cover all test cases for Search Page.", () => {
 
     const searchPage = homePage.clickOnSearchButton();
     searchPage.enterValidTermInSearchInputField(validSearchTerm);
-    searchPage.clickOnIssueTicket();
+    const ticketPage = searchPage.clickOnIssueTicket();
+    ticketPage.getTicketTitle().then(ticketTitle => {
+      expect(ticketTitle).to.be.equal(validSearchTerm, "Tiket title is not the same as search term entered in search input field!");
+    })
+
   });
 
 });

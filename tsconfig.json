@@ -1,11 +1,10 @@
 {
- 
     "compilerOptions": {
-        "target": "es5",
-        "lib": ["es5", "dom"],
-        "sourceMap": true,
-        "types": ["cypress", "node", "mocha"]
+      "target": "es2016",
+      "lib": ["es6", "dom"],
+      "sourceMap": true,
+      "strict": true,
+      "types": ["cypress", "node"]
     },
     "include": ["**/*.ts"]
-
 }

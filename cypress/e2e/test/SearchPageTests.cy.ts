@@ -23,7 +23,7 @@ describe("This section will cover all test cases for Search Page.", () => {
   it("Error message displayed when a non-existing search term is entered", () => {
     searchPage.enterTextInSearchInputField("invalidSearchTerm");
     searchPage.getErrorMessageTitle().then((errorMessageTitle) => {
-      expect(errorMessageTitle.trim()).to.equal("We couldn't find anything matching your searchs");
+      expect(errorMessageTitle.trim()).to.equal("We couldn't find anything matching your search");
     });
   });
 

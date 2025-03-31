@@ -1,23 +1,18 @@
+import { StatusConstants } from "../../helpers/constants/StatusConstants";
 import HomePage from "../../pageobjects/HomePage";
 import { faker } from "@faker-js/faker";
 
 describe("This section will cover all test cases for Creating issue page.", () => {
 
-  let ticketTitle: string;
-  let homePage: HomePage;
-
-  beforeEach(() => {
+  it("Creates an issue and verifies it's visible in the backlog column.", () => {
     cy.visit("/");
 
-    ticketTitle = faker.string.alphanumeric(10);
-    homePage = new HomePage();
-    const createIssuePage = homePage.clickOnCreateIssueButton();
+    const ticketTitle = faker.string.alphanumeric(10);
+    const homePage = new HomePage();
+    const createIssuePage = homePage.clickOnCreateIssueButton(3);
     createIssuePage.enterTextIntoShortSummeryInputField(ticketTitle);
     createIssuePage.clickOnCreateIssueButton();
-  });
-
-  it("Creates an issue and verifies it's visible in the backlog column.", () => {
-    homePage.getBacklogTicketTitle().then((ticketTitlesInBacklog) => {
+    homePage.getColumnTicketsTitlesText(StatusConstants.BACKLOG).then((ticketTitlesInBacklog) => {
       expect(ticketTitlesInBacklog.trim()).to.contain(ticketTitle);
     });
   });

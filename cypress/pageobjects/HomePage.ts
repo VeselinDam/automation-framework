@@ -3,33 +3,40 @@ import SearchPage from "./SearchPage";
 import TicketPage from "./TicketPage";
 
 class HomePage {
-  searchIconButton = ".navbarLeft-content > :nth-child(2)";
-  firstTicketCardInFirstColumn =
-    "#Backlog > :nth-child(1) > .issue-wrap > .issue";
-  createIssueButton = ".navbarLeft-content > :nth-child(3)";
-  backlogTicketTitles = "#Backlog issue-card .text-textDarkest";
   columnsTitles = "div .status-list .pb-4";
 
-  clickOnSearchButton(): SearchPage {
-    cy.get(this.searchIconButton).should("be.visible").click();
+  private columnTicketsTitles(columnName: string): string {
+    return `#${columnName} issue-card .text-textDarkest`;
+  }
+
+  private issueInColumn(columnName: string, issueIndex: number): string {
+    return `#${columnName} :nth-child(${issueIndex}) > .issue-wrap > .issue`;
+  }
+
+  private navbarLeftContentItem(item: number): string {
+    return `.navbarLeft-content > :nth-child(${item})`;
+  }
+
+  clickOnSearchButton(searchButton: number): SearchPage {
+    cy.get(this.navbarLeftContentItem(searchButton)).should("be.visible").click();
     return new SearchPage();
   }
 
-  clickOnFirstTicketCardInFirstColumn(): TicketPage {
-    cy.get(this.firstTicketCardInFirstColumn).should("be.visible").click();
+  clickOnTicketCardInColumn(columnName: string, index: number): TicketPage {
+    cy.get(this.issueInColumn(columnName, index)).should("be.visible").click();
     return new TicketPage();
   }
 
-  clickOnCreateIssueButton(): CreateIssuePage {
-    cy.get(this.createIssueButton).should("be.visible").click();
+  clickOnCreateIssueButton(createIssueButton: number): CreateIssuePage {
+    cy.get(this.navbarLeftContentItem(createIssueButton)).should("be.visible").click();
     return new CreateIssuePage();
   }
 
-  getBacklogTicketTitle(): Cypress.Chainable<string> {
-    return cy.get(this.backlogTicketTitles).should("be.visible").invoke("text");
+  getColumnTicketsTitlesText(columnName: string): Cypress.Chainable<string> {
+    return cy.get(this.columnTicketsTitles(columnName)).should("be.visible").invoke("text");
   }
 
-  getColumnsTitle(): Cypress.Chainable<string[]> {
+  getColumnsTitles(): Cypress.Chainable<string[]> {
     const columnsTitles: string[] = [];
 
     return cy.get(this.columnsTitles)

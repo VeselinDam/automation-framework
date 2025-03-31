@@ -1,1 +1,0 @@
-export const validSearchTerm = "Try leaving a comment on this issue.";

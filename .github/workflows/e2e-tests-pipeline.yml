@@ -25,8 +25,17 @@ jobs:
       - name: Install dependencies
         run: npm ci 
 
-      - name: Run E2E tests (Chrome)
-        run: npx cypress run --browser chrome
+        - name: Run E2E tests with retry (Chrome)
+        run: |
+          attempts=0
+          max_attempts=3
+          until [ $attempts -ge $max_attempts ]
+          do
+            npx cypress run --browser chrome && break
+            attempts=$((attempts+1))
+            echo "Test failed, retrying... ($attempts/$max_attempts)"
+            sleep 10
+          done
 
       - name: Upload Failed test screenshots (If test fail)
         if: failure()

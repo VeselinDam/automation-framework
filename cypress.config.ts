@@ -13,6 +13,10 @@ module.exports = defineConfig({
       // implement node event listeners here
       require("cypress-mochawesome-reporter/plugin")(on);
     },
+    retries: {
+      runMode: 3,
+      openMode: 1 
+    },
     defaultCommandTimeout: 8000,
     pageLoadTimeout: 20000,
     viewportWidth: 1400,

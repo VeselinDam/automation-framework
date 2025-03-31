@@ -4,6 +4,8 @@ import TicketPage from "./TicketPage";
 
 class HomePage {
   columnsTitles = "div .status-list .pb-4";
+  searchInputFieldInHeaderBar = "div .input-container";
+  avatarAssignee = "div .lift-avatar"
 
   private columnTicketsTitles(columnName: string): string {
     return `#${columnName} issue-card .text-textDarkest`;
@@ -32,8 +34,16 @@ class HomePage {
     return new CreateIssuePage();
   }
 
-  getColumnTicketsTitlesText(columnName: string): Cypress.Chainable<string> {
-    return cy.get(this.columnTicketsTitles(columnName)).should("be.visible").invoke("text");
+  getColumnTicketsTitlesText(columnName: string): Cypress.Chainable<JQuery<HTMLElement>> {
+    return cy.get(this.columnTicketsTitles(columnName)).should("be.visible");
+  }
+
+  checkIfSearchInputFieldInHeaderBarIsVisible(){
+    cy.get(this.searchInputFieldInHeaderBar).should("be.visible");
+  }
+
+  checkIfAvatarAssigneeInHeaderBarIsVisible(){
+    cy.get(this.avatarAssignee).should("be.visible");
   }
 
   getColumnsTitles(): Cypress.Chainable<string[]> {

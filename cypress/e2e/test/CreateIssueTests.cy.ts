@@ -2,9 +2,9 @@ import { StatusConstants } from "../../helpers/constants/StatusConstants";
 import HomePage from "../../pageobjects/HomePage";
 import { faker } from "@faker-js/faker";
 
-describe("This section will cover all test cases for Creating issue page.", () => {
+describe("Creating an issue.", () => {
 
-  it("Creates an issue and verifies it's visible in the backlog column.", () => {
+  it("creates an issue and verifies it's added to the backlog.", () => {
     cy.visit("/");
 
     const ticketTitle = faker.string.alphanumeric(10);
@@ -13,7 +13,7 @@ describe("This section will cover all test cases for Creating issue page.", () =
     createIssuePage.enterTextIntoShortSummeryInputField(ticketTitle);
     createIssuePage.clickOnCreateIssueButton();
     homePage.getColumnTicketsTitlesText(StatusConstants.BACKLOG).then((ticketTitlesInBacklog) => {
-      expect(ticketTitlesInBacklog.trim()).to.contain(ticketTitle);
+      expect(ticketTitlesInBacklog).to.contain(ticketTitle);
     });
   });
 });

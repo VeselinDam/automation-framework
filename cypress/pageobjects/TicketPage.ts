@@ -1,3 +1,5 @@
+import IssueDeleteDialog from "./components.ts/IssueDeleteDialog";
+
 class TicketPage {
 
   ticketTitle = "div .ant-modal-body issue-title textarea";
@@ -11,6 +13,7 @@ class TicketPage {
   ticketDeleteButton = "[icon='trash'] > .btn";
   statusOptions = ".ant-dropdown > .mt-3 li div span";
   closeButton = "[icon='times'] > .btn";
+  trashButton = "[icon='trash'] > .btn";
 
   getTicketTitle(): Cypress.Chainable<string> {
     return cy.get(this.ticketTitle).should("be.visible").invoke("val");
@@ -62,6 +65,11 @@ class TicketPage {
 
   clickOnCloseButton() {
     cy.get(this.closeButton).should("be.visible").click();
+  }
+
+  clickOnTrashButton(): IssueDeleteDialog {
+    cy.get(this.trashButton).should("be.visible").click();
+    return new IssueDeleteDialog();
   }
 }
 

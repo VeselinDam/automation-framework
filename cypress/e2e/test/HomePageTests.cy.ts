@@ -3,7 +3,7 @@ import HomePage from "../../pageobjects/HomePage";
 import { ISSUE_TITLE } from "../../helpers/constants/SearchPageConstants";
 import { StatusConstants } from "../../helpers/constants/StatusConstants";
 
-describe("This section will cover all test cases for Home page.", () => {
+describe("Jira Home Page - Board, Columns, and Header", () => {
   let homePage: HomePage;
 
   beforeEach(() => {
@@ -11,7 +11,7 @@ describe("This section will cover all test cases for Home page.", () => {
     homePage = new HomePage();
   });
 
-  it("Verify column titles on Jira board are visible.", () => {
+  it("verify column titles on Jira board are visible.", () => {
     homePage.getColumnsTitles().then((columnsTitles) => {
       columnNamesAsserts.forEach((column: string, index) => {
         expect(columnsTitles[index]).to.equal(column);
@@ -19,15 +19,22 @@ describe("This section will cover all test cases for Home page.", () => {
     });
   });
 
-  it("Move ticket between columns.", () => {
+  it("move a ticket between columns", () => {
     const searchPage = homePage.clickOnSearchButton(2);
     searchPage.enterTextInSearchInputField(ISSUE_TITLE);
     const ticketPage = searchPage.clickOnIssueTicket();
     ticketPage.clickOnStatusButton();
     ticketPage.selectTicketStatus(StatusConstants.DONE);
     ticketPage.clickOnCloseButton();
-    homePage.getColumnTicketsTitlesText(StatusConstants.DONE).then((ticketsTitles) => {
+    homePage
+      .getColumnTicketsTitlesText(StatusConstants.DONE)
+      .then((ticketsTitles) => {
         expect(ticketsTitles).to.contain(ISSUE_TITLE);
-    })
+      });
+  });
+
+  it("verify header control bar elements.", () => {
+    homePage.checkIfSearchInputFieldInHeaderBarIsVisible();
+    homePage.checkIfAvatarAssigneeInHeaderBarIsVisible();
   });
 });

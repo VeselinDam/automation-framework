@@ -1,7 +1,8 @@
 import { StatusConstants } from "../../helpers/constants/StatusConstants";
 import HomePage from "../../pageobjects/HomePage";
-import { faker, ne } from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 import TicketPage from "../../pageobjects/TicketPage";
+import SearchPageErrorMessageAsserts from "../../helpers/asserts/SearchPageErrorMessagesAsserts";
 
 describe("Deleting an issue.", () => {
   let homePage: HomePage;
@@ -29,9 +30,10 @@ describe("Deleting an issue.", () => {
     const searchPage = homePage.clickOnSearchButton(2);
     searchPage.enterTextInSearchInputField(ticketTitle);
     searchPage.getErrorMessageTitle().then((errorMessageTitle) => {
-      expect(errorMessageTitle.trim()).to.equal(
-        "We couldn't find anything matching your search"
-      );
+      expect(errorMessageTitle.trim()).to.equal(SearchPageErrorMessageAsserts.errorMessageTitle);
+    });
+    searchPage.getErrorMessageSubtitle().then((errorMessageSubtitle) => {
+      expect(errorMessageSubtitle.trim()).to.equal(SearchPageErrorMessageAsserts.errorMessageSubtitle);
     });
   });
 });

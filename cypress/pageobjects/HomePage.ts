@@ -6,6 +6,8 @@ class HomePage {
   columnsTitles = "div .status-list .pb-4";
   searchInputFieldInHeaderBar = "div .input-container";
   avatarAssignee = "div .lift-avatar"
+  onlyMyIssueButton = ":nth-child(3) > .btn";
+  ignoreResolved = ":nth-child(4) > .btn";
 
   private columnTicketsTitles(columnName: string): string {
     return `#${columnName} issue-card .text-textDarkest`;
@@ -44,6 +46,14 @@ class HomePage {
 
   checkIfAvatarAssigneeInHeaderBarIsVisible(){
     cy.get(this.avatarAssignee).should("be.visible");
+  }
+
+  checkIfOnlyMyIssueButtonIsVisible(){
+    cy.get(this.onlyMyIssueButton).should("be.visible");
+  }
+
+  checkIfIgnoreResolvedButtonIsVisible(){
+    cy.get(this.ignoreResolved).should("be.visible");
   }
 
   getColumnsTitles(): Cypress.Chainable<string[]> {

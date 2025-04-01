@@ -36,5 +36,7 @@ describe("Jira Home Page - Board, Columns, and Header", () => {
   it("verify header control bar elements are visible.", () => {
     homePage.checkIfSearchInputFieldInHeaderBarIsVisible();
     homePage.checkIfAvatarAssigneeInHeaderBarIsVisible();
+    homePage.checkIfIgnoreResolvedButtonIsVisible();
+    homePage.checkIfOnlyMyIssueButtonIsVisible();
   });
 });

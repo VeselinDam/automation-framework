@@ -1,8 +1,8 @@
 import { StatusConstants } from "../../helpers/constants/StatusConstants";
 import HomePage from "../../pageobjects/HomePage";
 
-describe("This section will cover all test cases for Ticket page.", ()=>{
-    it("Verifies essential elements are visible when the ticket card opens.", ()=>{
+describe("Test cases for essential elements on the Ticket page.", ()=>{
+    it("Should display all essential elements on the ticket page.", ()=>{
         cy.visit("/");
         const homePage = new HomePage();
         const ticketPage = homePage.clickOnTicketCardInColumn(StatusConstants.DONE, 2);

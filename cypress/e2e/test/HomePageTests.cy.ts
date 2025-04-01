@@ -1,7 +1,7 @@
 import { columnNamesAsserts } from "../../helpers/asserts/HomePageAsserts";
 import HomePage from "../../pageobjects/HomePage";
-import { ISSUE_TITLE } from "../../helpers/constants/SearchPageConstants";
 import { StatusConstants } from "../../helpers/constants/StatusConstants";
+import SearchPageConstants from "../../helpers/constants/SearchPageConstants";
 
 describe("Jira Home Page - Board, Columns, and Header", () => {
   let homePage: HomePage;
@@ -21,7 +21,7 @@ describe("Jira Home Page - Board, Columns, and Header", () => {
 
   it("move a ticket between columns", () => {
     const searchPage = homePage.clickOnSearchButton(2);
-    searchPage.enterTextInSearchInputField(ISSUE_TITLE);
+    searchPage.enterTextInSearchInputField(SearchPageConstants.ISSUE_TITLE);
     const ticketPage = searchPage.clickOnIssueTicket();
     ticketPage.clickOnStatusButton();
     ticketPage.selectTicketStatus(StatusConstants.DONE);
@@ -29,11 +29,11 @@ describe("Jira Home Page - Board, Columns, and Header", () => {
     homePage
       .getColumnTicketsTitlesText(StatusConstants.DONE)
       .then((ticketsTitles) => {
-        expect(ticketsTitles).to.contain(ISSUE_TITLE);
+        expect(ticketsTitles).to.contain(SearchPageConstants.ISSUE_TITLE);
       });
   });
 
-  it("verify header control bar elements.", () => {
+  it("verify header control bar elements are visible.", () => {
     homePage.checkIfSearchInputFieldInHeaderBarIsVisible();
     homePage.checkIfAvatarAssigneeInHeaderBarIsVisible();
   });

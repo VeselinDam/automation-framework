@@ -6,7 +6,8 @@ module.exports = defineConfig({
     reportDir: "cypress/reports",
     overwrite: false,
     html: true,
-    json: true
+    json: true,
+    reportFilename: `test-results-${new Date().toISOString().split("T")[0]}`
   },
   e2e: {
     setupNodeEvents(on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions) {

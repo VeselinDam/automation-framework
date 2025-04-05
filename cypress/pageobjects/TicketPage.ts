@@ -1,4 +1,4 @@
-import IssueDeleteDialog from "./components.ts/IssueDeleteDialog";
+import IssueDeleteDialog from "./components/IssueDeleteDialog";
 
 class TicketPage {
 

@@ -23,6 +23,5 @@ module.exports = defineConfig({
     viewportWidth: 1400,
     viewportHeight: 960,
     baseUrl: "https://jira.trungk18.com/project/board",
-    screenshotsFolder: 'failed-test-results/screenshots',
   },
 });

@@ -22,6 +22,7 @@ module.exports = defineConfig({
     pageLoadTimeout: 20000,
     viewportWidth: 1400,
     viewportHeight: 960,
-    baseUrl: "https://jira.trungk18.com/project/board"
+    baseUrl: "https://jira.trungk18.com/project/board",
+    screenshotsFolder: 'failed-test-results/screenshots',
   },
 });

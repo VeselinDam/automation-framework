@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: e2e-html-report
-          path: e2e/reports/html
+          path: cypress/reports/html
 
       - name: Upload Failed test screenshots (If test fail)
         if: failure()

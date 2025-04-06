@@ -1,7 +1,7 @@
-import HomePage from "../../pageobjects/HomePage";
-import SearchPage from "../../pageobjects/SearchPage";
-import SearchPageErrorMessageAsserts from "../../helpers/asserts/SearchPageErrorMessagesAsserts";
-import SearchPageConstants from "../../helpers/constants/SearchPageConstants";
+import HomePage from "pageobjects/HomePage";
+import SearchPage from "pageobjects/SearchPage";
+import SearchPageErrorMessageAsserts from "helpers/asserts/SearchPageErrorMessagesAsserts";
+import SearchPageConstants from "helpers/constants/SearchPageConstants";
 
 describe("Search Page - Searching and Opening Issues", () => {
   let homePage: HomePage;

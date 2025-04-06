@@ -8,6 +8,7 @@
     "types": ["cypress", "node"],
     "module": "commonjs",            
     "moduleResolution": "node",      
-    "esModuleInterop": true          
+    "esModuleInterop": true,
+    "baseUrl": "./cypress"
   }
 }

@@ -1,8 +1,8 @@
-import { StatusConstants } from "../../helpers/constants/StatusConstants";
-import HomePage from "../../pageobjects/HomePage";
+import { StatusConstants } from "helpers/constants/StatusConstants";
+import HomePage from "pageobjects/HomePage";
 import { faker } from "@faker-js/faker";
-import TicketPage from "../../pageobjects/TicketPage";
-import SearchPageErrorMessageAsserts from "../../helpers/asserts/SearchPageErrorMessagesAsserts";
+import TicketPage from "pageobjects/TicketPage";
+import SearchPageErrorMessageAsserts from "helpers/asserts/SearchPageErrorMessagesAsserts";
 
 describe("Deleting an issue.", () => {
   let homePage: HomePage;

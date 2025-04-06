@@ -1,5 +1,5 @@
-import { StatusConstants } from "../../helpers/constants/StatusConstants";
-import HomePage from "../../pageobjects/HomePage";
+import { StatusConstants } from "helpers/constants/StatusConstants";
+import HomePage from "pageobjects/HomePage";
 import { faker } from "@faker-js/faker";
 
 describe("Creating an issue.", () => {

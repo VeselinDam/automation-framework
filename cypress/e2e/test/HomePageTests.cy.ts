@@ -1,7 +1,7 @@
-import { columnNamesAsserts } from "../../helpers/asserts/HomePageAsserts";
-import HomePage from "../../pageobjects/HomePage";
-import { StatusConstants } from "../../helpers/constants/StatusConstants";
-import SearchPageConstants from "../../helpers/constants/SearchPageConstants";
+import { columnNamesAsserts } from "helpers/asserts/HomePageAsserts";
+import HomePage from "pageobjects/HomePage";
+import { StatusConstants } from "helpers/constants/StatusConstants";
+import SearchPageConstants from "helpers/constants/SearchPageConstants";
 
 describe("Jira Home Page - Board, Columns, and Header", () => {
   let homePage: HomePage;

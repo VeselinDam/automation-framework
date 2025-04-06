@@ -1,5 +1,5 @@
-import { StatusConstants } from "../../helpers/constants/StatusConstants";
-import HomePage from "../../pageobjects/HomePage";
+import { StatusConstants } from "helpers/constants/StatusConstants";
+import HomePage from "pageobjects/HomePage";
 
 describe("Test cases for essential elements on the Ticket page.", ()=>{
     it("Should display all essential elements on the ticket page.", ()=>{

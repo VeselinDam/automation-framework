@@ -25,8 +25,20 @@ jobs:
       - name: Install dependencies
         run: npm ci 
 
-      - name: Run Cypress tests (Chrome)
-        run: npx cypress run --browser chrome
+      - name: Run E2E tests with Mochawesome Reporter (Chrome)
+        run: npx cypress run --browser chrome --reporter cypress-mochawesome-reporter
+
+      - name: Merge all JSON reports
+        run: npx mochawesome-merge cypress/reports/*.json -o cypress/reports/report.json
+
+      - name: Generate HTML report from JSON reports
+        run: npx marge cypress/reports/report.json -o cypress/reports/html
+
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-html-report
+          path: e2e/reports/html
 
       - name: Upload Failed test screenshots (If test fail)
         if: failure()

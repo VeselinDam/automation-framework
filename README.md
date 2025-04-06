@@ -25,7 +25,7 @@ Main branch: [main](https://github.com/VeselinDam/automation-framework)
   - Run all tests:
     * In termina type `npx cypress run`.
   - Run a specific test file:
-    * In termina type `npx cypress run --spec "cypress/e2e/test/<file-name>.cy.js"`
+    * In termina type `npx cypress run --spec "cypress/e2e/tests/<file-name>.cy.js"`
 
 ### How to run tests report:
 
